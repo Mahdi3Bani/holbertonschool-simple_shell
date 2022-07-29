@@ -1,38 +1,48 @@
 #include "shell.h"
 /**
- * main - a simple shell (gates of s"hell" r open)
- * @argc: Argument Count
- * @argv:Argument Value
- * Return: idk yet
+ * main - the main...
+ * @argc: argument count
+ * @argv: argument value
+ * Return: 0
  */
-int main(int argc, char **argv)
+int main(int argc __attribute__((unused)), char **argv)
 {
+	char *buff, delimiters[] = "", *str, *error, **argument;
+	int l = 0;
+	pid_t pid = 0;
 
-char *cmd;
-
-while (1)
-{
-    print_1();
-    cmd = read_cmd();
-
-    if (!cmd)
-    {
-        exit(EXIT_SUCCESS);
-    }
-    if (cmd [0] == '\0' || strcmp(cmd, "\n") == 0)
-    {
-        free(cmd);
-        continue;
-    }
-     if(strcmp(cmd, "exit\n") == 0)
-        {
-            free(cmd);
-            break;
-        }
-        printf("%s\n", cmd);
-        free(cmd);
-}
-
-    exit(EXIT_SUCCESS);
-
+	while (1)
+	{
+		l++;
+		buff = display();
+		argument = stock(buff, delimiters);
+		buff = NULL;
+		buff = parse(argument);
+		if (buff)
+		{
+			str = _path(argument[0]);
+			error = strdup(argument[0]);
+			free(argument[0]);
+			argument[0] = strdup(str);
+			free(str);
+			str = NULL;
+			if (!argument[0])
+			{
+				_error(l, &argv[0], error);
+				free(error);
+				error = NULL;
+			}
+			else
+			{
+				free(error);
+				error = NULL;
+				if (pid == 0)
+					execve(argument[0], argument, NULL);
+				else
+					waitpid(pid, NULL, 0);
+			}
+		}
+		clear(argument);
+	}
+	return (0);
 }
