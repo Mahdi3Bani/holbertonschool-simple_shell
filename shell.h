@@ -5,11 +5,9 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
-#include<string.h>
-#include<unistd.h>
-void print_1(void);
-void print_1(void);
+#include <unistd.h>
+#include <signal.h>
 
-char *read_cmd(void);
+int read_line(int argc, char **argv);
 
 #endif
