@@ -7,8 +7,8 @@
 #include <errno.h>
 #include<string.h>
 #include<unistd.h>
-void print_prompt1(void);
-void print_prompt2(void);
+void print_1(void);
+void print_2(void);
 
 char *read_cmd(void);
 
