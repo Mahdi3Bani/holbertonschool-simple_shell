@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "shell.h"
 
-void print_prompt1(void)
+void print_1(void)
 {
     fprintf(stderr, "$ ");
 }
-void print_prompt2(void)
+void print_2(void)
 {
     fprintf(stderr, "> ");
 }
@@ -49,7 +49,7 @@ char *read_cmd(void)
             }
             ptr[ptrlen + buflen - 2] = '\0';
             buflen -= 2;
-            print_prompt2();
+            print_2();
         }
         ptrlen += buflen;
     }
