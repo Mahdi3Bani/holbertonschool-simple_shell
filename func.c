@@ -11,7 +11,8 @@ void print_2(void)
 }
 char *read_cmd(void)
 {
-    char buf[1024];
+    #define BUFFER_SIZE 1024
+    char buf[BUFFER_SIZE];
     char *ptr = NULL;
     char ptrlen = 0;
     while (fgets(buf, 1024, stdin))
