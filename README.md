@@ -44,9 +44,9 @@ we add this after we finish
 
 ## License :busts_in_silhouette:
 Authors :
-Mahdi Bani < 5035@holbertonschool.com >
-Mohamed Ali Krifa < 4997@holbertonschool.com >
-Imen Mansouri < imen.mansouri@holberthonstudents.com >
+- Mahdi Bani < 5035@holbertonschool.com >
+- Mohamed Ali Krifa < 4997@holbertonschool.com >
+- Imen Mansouri < imen.mansouri@holberthonstudents.com >
 
 **This project was made as part of the curriculum in HOLBERTON SCHOOL**
 ![holberton-logo](https://user-images.githubusercontent.com/97880395/181658846-6e76edce-7d56-4abe-8c62-228479bde436.png)
