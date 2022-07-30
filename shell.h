@@ -18,7 +18,7 @@ void clear(char **arguments);
 char *parse(char **argument);
 char *_path(char *f);
 void _error(int l, char **argument, char *str);
-char *find_path(void);
+char *build(char *token, char *value);
 char *read_cmd(void);
 char *itoa(unsigned int l);
 char **stock(char *buff, char *delimiters);
