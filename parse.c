@@ -8,12 +8,12 @@ char *parse(char **argument)
 {
 	int i;
     char **env;
-	if (argument[0] == "exist")
+	if (!strcmp(argument[0], "exit"))
 	{
 		clear(argument);
 		exit(EXIT_SUCCESS);
 	}
-	else if (argument[0] == "env")
+	else if (!strcmp(argument[0], "env"))
 	{
 		for (i = 0; env[i]; i++)
 		{
