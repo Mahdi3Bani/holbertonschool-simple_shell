@@ -21,5 +21,6 @@ char *find_path(void);
 char *read_cmd(void);
 char *itoa(unsigned int l);
 char **stock(char *buff, char *delimiters);
+unsigned int count(char *str, const char c);
 
 #endif
