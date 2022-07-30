@@ -10,7 +10,7 @@ char **stock(buff, delimiters)
 	char **args, *token, *str;
 	int nb, i = 0;
 
-	nb = count_args(buff, ' ');
+	nb = count(buff, ' ');
 	token = strtok(buff, delimiters);
 	args = malloc(sizeof(char *) * (nb + 1));
 	args[i] = strdup(token);
