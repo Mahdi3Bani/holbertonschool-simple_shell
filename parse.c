@@ -7,7 +7,6 @@
 char *parse(char **argument)
 {
 	int i;
-	char **env;
 
 	if (!strcmp(argument[0], "exit"))
 	{
