@@ -5,7 +5,7 @@
  */
 char *find_path(void)
 {
-    char **env;
+    
    int i = -1, j, flag = 1;
 	char *str, *target = "PATH";
 
