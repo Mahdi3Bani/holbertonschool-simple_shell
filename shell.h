@@ -10,6 +10,8 @@ extern char **env;
 #include <errno.h>
 #include <unistd.h>
 #include <signal.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 void clear(char **arguments);
 char *parse(char **argument);
