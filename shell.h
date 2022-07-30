@@ -1,5 +1,8 @@
 #ifndef SHELL_H
 #define SHELL_H
+
+extern char **env;
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -8,6 +11,11 @@
 #include <unistd.h>
 #include <signal.h>
 
-int read_line(int argc, char **argv);
+void clear(char **arguments);
+char *parse(char **argument);
+char *_path(char *f);
+void _error(int l, char **argument, char *str);
+char *find_path(void);
+char *read_cmd(void);
 
 #endif
