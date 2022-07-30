@@ -5,7 +5,7 @@
  * @delimeters: list of char
  * Return: array of argument
  */
-char **stock(buff, delimiters)
+char **stock(char *buff, char *delimiters)
 {
 	char **args, *token, *str;
 	int nb, i = 0;
