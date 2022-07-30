@@ -1,37 +1,58 @@
 #include "shell.h"
-/**
- * _path - find the path
- * @f: command
- * Return: the path
- */
-char *_path(char *f)
-{
-	int i = 0;
-	char *token, *l, *p, *str, *slach = "/\0";
 
-	str = find_path();
-	token = strtok(str, "=");
-	while (token)
+/**
+ * path_cmd -  Search In $PATH For Excutable Command
+ * @cmd: Parsed Input
+ * Return: 1  Failure  0  Success.
+ */
+int path_cmd(char **cmd)
+{
+	char *path, *value, *cmd_path;
+	struct stat buf;
+
+	path = getenv("PATH");
+	value = strtok(path, ":");
+	while (value != NULL)
 	{
-		token = strtok(NULL, ":");
-		if (token)
+		cmd_path = build(*cmd, value);
+		if (stat(cmd_path, &buf) == 0)
 		{
-			l = malloc(sizeof(char) * (strlen(token) + strlen(f) + 2));
-			strcpy(l, token);
-			p = strcat(strcat(l, slach), f);
-			if (access(p, F_OK) == 0)
-				break;
+			*cmd = _strdup(cmd_path);
+			free(cmd_path);
+			free(path);
+			return (0);
 		}
-		else
-		{
-			p = NULL;
-			break;
-		}
-		free(l);
-		l = NULL;
-		i++;
+		free(cmd_path);
+		value = strtok(NULL, ":");
 	}
-	free(str);
-	str = NULL;
-	return (p);
+	free(path);
+
+	return (1);
+}
+/**
+ * build - Build Command
+ * @token: Excutable Command
+ * @value: Dirctory Conatining Command
+ *
+ * Return: Parsed Full Path Of Command Or NULL Case Failed
+ */
+char *build(char *token, char *value)
+{
+	char *cmd;
+	size_t len;
+
+	len = strlen(value) + strlen(token) + 2;
+	cmd = malloc(sizeof(char) * len);
+	if (cmd == NULL)
+	{
+		return (NULL);
+	}
+
+	memset(cmd, 0, len);
+
+	cmd = strcat(cmd, value);
+	cmd = strcat(cmd, "/");
+	cmd = strcat(cmd, token);
+
+	return (cmd);
 }
