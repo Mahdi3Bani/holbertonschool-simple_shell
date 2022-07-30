@@ -23,7 +23,7 @@ char **stock(char *buff, char *delimiters)
 		}
 	}
 	args[i] = NULL;
-	if (count_args(args[0], '/') > 1)
+	if (count(args[0], '/') > 1)
 	{
 		token = strtok(args[0], "/");
 		while (token)
