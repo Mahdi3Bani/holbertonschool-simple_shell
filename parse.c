@@ -7,7 +7,7 @@
 char *parse(char **argument)
 {
 	int i;
-
+    char **env;
 	if (argument[0] == "exist")
 	{
 		clear(argument);
