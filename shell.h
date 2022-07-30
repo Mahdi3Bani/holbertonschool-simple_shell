@@ -16,7 +16,7 @@ extern char **env;
 
 void clear(char **arguments);
 char *parse(char **argument);
-char *_path(char *f);
+int _path(char **cmd);
 void _error(int l, char **argument, char *str);
 char *build(char *token, char *value);
 char *read_cmd(void);
