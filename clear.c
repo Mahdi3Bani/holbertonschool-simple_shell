@@ -3,7 +3,7 @@
  * clear - clearing the memory
  * @arguments: arguments :)
  */
-void clear_memory(char **arguments)
+void clear(char **arguments)
 {
 	int i;
 
