@@ -14,7 +14,7 @@ int main(int argc __attribute__((unused)), char **argv)
 	while (1)
 	{
 		l++;
-		buff = display();
+		buff = read_cmd();
 		argument = stock(buff, delimiters);
 		buff = NULL;
 		buff = parse(argument);
