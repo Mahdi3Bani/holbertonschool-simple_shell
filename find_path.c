@@ -5,10 +5,10 @@
  */
 char *find_path(void)
 {
-   int i = 0, j, flag = 1;
+   int i = -1, j, flag = 1;
 	char *str, *target = "PATH";
 
-	while (env[i++] && flag)
+	while (env[++i] && flag)
 	{
 		if (env[i][0] == target[0])
 		{
