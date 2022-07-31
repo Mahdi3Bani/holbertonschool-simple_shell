@@ -11,7 +11,7 @@
  **/
 int _path(char *path)
 {
-	if (strlen(path) >= 2)
+	if (strlen(path) > 3)
 	{
 		if ((path[0] == '.' && path[1] == '/') || path[0] == '/' ||
 			(path[0] == '.' && path[1] == '.' && path[2] == '/'))
@@ -63,7 +63,7 @@ char *_match(char **exec)
 	if (strlen(path) == 0)
 		return (NULL);
 
-	array = strtow(path, ':');
+	array = str_split(path, ':');
 	if (!array)
 		return (NULL);
 
@@ -74,13 +74,13 @@ char *_match(char **exec)
 		{
 			free(*exec);
 			*exec = p;
-			free_tow(array);
+			free_arr(array);
 			return (p);
 		}
 
 		free(p);
 		i++;
 	}
-	free_tow(array);
+	free_arr(array);
 	return (NULL);
 }
