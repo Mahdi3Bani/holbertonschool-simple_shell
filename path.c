@@ -1,58 +1,86 @@
 #include "shell.h"
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 /**
- * _path -  Search In $PATH For Excutable Command
- * @cmd: Parsed Input
- * Return: 1  Failure  0  Success.
- */
-int _path(char **cmd)
+ * _path - is path?
+ * @path: path
+ *
+ * Return: 1 (not absolute) 0 (absolute)
+ **/
+int _path(char *path)
 {
-	char *path, *value, *cmd_path;
-	struct stat buf;
+	if (strlen(path) >= 2)
+	{
+		if ((path[0] == '.' && path[1] == '/') || path[0] == '/' ||
+			(path[0] == '.' && path[1] == '.' && path[2] == '/'))
+			return (1);
+	}
+
+	return (0);
+}
+
+/**
+ * make_path - make path to file from directory and file
+ * @path: path to directory
+ * @file: file
+ * Return: New Path
+ **/
+char *make_path(char *path, char *file)
+{
+	char *n;
+
+	if (path == NULL || file == NULL)
+		return (NULL);
+
+	n = malloc(sizeof(char) *
+		(strlen(path) + strlen(file) + 2));
+	if (!n)
+		return (NULL);
+
+	strcpy(n, path);
+	n[strlen(path)] = '/';
+	n[strlen(path) + 1] = '\0';
+	strcat(n, file);
+
+	return (n);
+}
+
+/**
+ * path_match - find directory insid PATH
+ * that file resides in if any
+ * @exec: executable name
+ * Return: full path of executable or NULL if it's not found
+ **/
+char *_match(char **exec)
+{
+	char **array, *p, *path;
+	int i = 0;
+	struct stat st;
 
 	path = getenv("PATH");
-	value = strtok(path, ":");
-	while (value != NULL)
-	{
-		cmd_path = build(*cmd, value);
-		if (stat(cmd_path, &buf) == 0)
-		{
-			*cmd = _strdup(cmd_path);
-			free(cmd_path);
-			free(path);
-			return (0);
-		}
-		free(cmd_path);
-		value = strtok(NULL, ":");
-	}
-	free(path);
-
-	return (1);
-}
-/**
- * build - Build Command
- * @token: Excutable Command
- * @value: Dirctory Conatining Command
- *
- * Return: Parsed Full Path Of Command Or NULL Case Failed
- */
-char *build(char *token, char *value)
-{
-	char *cmd;
-	size_t len;
-
-	len = strlen(value) + strlen(token) + 2;
-	cmd = malloc(sizeof(char) * len);
-	if (cmd == NULL)
-	{
+	if (strlen(path) == 0)
 		return (NULL);
+
+	array = strtow(path, ':');
+	if (!array)
+		return (NULL);
+
+	while (array[i] != NULL)
+	{
+		p = make_path(array[i], *exec);
+		if (stat(p, &st) == 0)
+		{
+			free(*exec);
+			*exec = p;
+			free_tow(array);
+			return (p);
+		}
+
+		free(p);
+		i++;
 	}
-
-	memset(cmd, 0, len);
-
-	cmd = strcat(cmd, value);
-	cmd = strcat(cmd, "/");
-	cmd = strcat(cmd, token);
-
-	return (cmd);
+	free_tow(array);
+	return (NULL);
 }
