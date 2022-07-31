@@ -15,7 +15,7 @@ void eror(char *name, char *err)
 }
 
 /**
-* exec - execute
+* exec_func - execute
 * @av: array of arguments
 * Return: 1 or 2
 *
@@ -95,7 +95,6 @@ void execute_line(char *line)
 
 				if (_path(av[0]) || _match(&av[0]))
 				{
-				
 					run_fork(av);
 				}
 				else
