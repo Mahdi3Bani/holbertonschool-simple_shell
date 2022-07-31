@@ -22,46 +22,42 @@ extern char **environ;
 
 
 
+/**
+ * struct builtin - the shell builtins
+ * @s: name of builtins
+ * @f: what the builtins do (or function)
+ **/
 
 
-
-typedef struct bltn
+typedef struct builtin
 {
 	char *s;
 	int (*f)(char **av);
 
-} bltn;
+} builtin;
 
 int _env(char **av);
 int _cd(char **av);
 int fexit(char **av);
 
 
-char **strtow(const char *str, const char del);
-void free_tow(char **tow);
-size_t len_tow(char **av);
-void print_tow(char **tow);
+char **str_split(const char *str, const char del);
+void free_arr(char **tow);
 
 
 
 char *_getenv(const char *name);
 char *_match(char **s);
 int _path(char *s);
-int _dir(char *file);
 
-int run_av(char **av);
 void execute_line(char *line);
-void err_out(char *name, char *err);
 
 
-void REPL(int input);
 
 
-char **strtow(const char *str, const char del);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
-int exec_bltn(char **av);
 
 
 
