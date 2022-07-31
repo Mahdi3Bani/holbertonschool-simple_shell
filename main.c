@@ -1,48 +1,42 @@
 #include "shell.h"
+
 /**
- * main - the main...
- * @argc: argument count
- * @argv: argument value
- * Return: 0
- */
-int main(int argc __attribute__((unused)), char **argv)
+ * REPL - REP loop
+ * @input: isatty(STDIN_FILENO)
+ **/
+void REPL(int input)
 {
-	char *buff, delimiters[] = "", *str, *error, **argument;
-	int l = 0;
-	pid_t pid = 0;
+	char *l = NULL;
+	size_t c = 0;
+	ssize_t a = 0;
 
 	while (1)
 	{
-		l++;
-		buff = read_cmd();
-		argument = stock(buff, delimiters);
-		buff = NULL;
-		buff = parse(argument);
-		if (buff)
+		if (input)
+			write(STDOUT_FILENO, "$ ", 2);
+		a = getline(&l, &c, stdin);
+		if (a == EOF)
 		{
-			str = _path(argument[0]);
-			error = strdup(argument[0]);
-			free(argument[0]);
-			argument[0] = strdup(str);
-			free(str);
-			str = NULL;
-			if (!argument[0])
-			{
-				_error(l, &argv[0], error);
-				free(error);
-				error = NULL;
-			}
-			else
-			{
-				free(error);
-				error = NULL;
-				if (pid == 0)
-					execve(argument[0], argument, NULL);
-				else
-					waitpid(pid, NULL, 0);
-			}
+			free(l);
+			exit(0);
 		}
-		clear(argument);
+		if (strcmp(l, "\n"))
+		{
+			execute_line(l);
+			l = NULL;
+		}
 	}
+}
+
+/**
+ * main - main function
+ *
+ * Return: 0 success, other otherwise
+ **/
+int main(void)
+{
+
+	REPL(isatty(STDIN_FILENO));
+
 	return (0);
 }
