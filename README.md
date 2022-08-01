@@ -16,7 +16,12 @@ Basic loop of a shell :
 | Readme | The README file |
 | Shell.h | The header file |
 | main.c | File that contain the main code |
-| Func.c | Function ... |
+| execute.c | Function ... |
+| path.c | Function ... |
+| split.c | Function ... |
+| _realloc.c | Function ... |
+| getenv.c | Function ... |
+| functions.c | Function ... |
 
 
 ## Function description :man_technologist:

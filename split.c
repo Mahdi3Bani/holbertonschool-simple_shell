@@ -23,7 +23,7 @@ char **str_split(const char *str, const char del)
 		if (str[i] != del)
 		{
 			s = _realloc(s, sizeof(char *) * w,
-						sizeof(char *) * (w + 1));
+						 sizeof(char *) * (w + 1));
 			s[w] = NULL;
 			while (str[j] && str[j] != del)
 			{
