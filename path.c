@@ -48,7 +48,7 @@ char *make_path(char *path, char *file)
 }
 
 /**
- * path_match - find directory insid PATH
+ * _match - find directory insid PATH
  * that file resides in if any
  * @exec: executable name
  * Return: full path of executable or NULL if it's not found

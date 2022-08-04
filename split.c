@@ -46,7 +46,7 @@ char **str_split(const char *str, const char del)
 }
 
 /**
- * free_tow - free the array
+ * free_arr - free the array
  * @arr: array
  **/
 void free_arr(char **arr)

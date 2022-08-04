@@ -1,5 +1,11 @@
 #include "shell.h"
-
+/**
+ * _realloc - realloc
+ * @ptr: pointer
+ * @old_size: old size of array
+ * @new_size: new size of array
+ * Return: new array
+ **/
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *nptr;
