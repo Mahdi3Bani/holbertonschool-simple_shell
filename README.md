@@ -73,10 +73,11 @@ _exit (man 2 _exit)
 ```
 #### Process description :man_technologist:
 
-How the shell works : 
-we add this after we finish
+How the shell actually works : 
+A parents process is one that creates a child process using a fork () system call.
+On the success of a fork() system call, the pid of the child process is returned to the parent process and 0 is returned to the child process. on the failure to the parent process a child process is not created.
 
-#### Flowchart of simple shell :man_technologist:
+#### Flowchart of simple shell :computer:
 ![68747470733a2f2f692e696d6775722e636f6d2f6e53516161516a2e6a7067](https://user-images.githubusercontent.com/97880395/182931094-367503c5-4677-4053-a640-2f5b13ec3c80.jpeg)
 
 ## License :busts_in_silhouette:
