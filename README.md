@@ -16,16 +16,13 @@ Basic loop of a shell :
 | Readme | The README file |
 | Shell.h | The header file |
 | main.c | File that contain the main code |
-| execute.c | Function ... |
-| path.c | Function ... |
-| split.c | Function ... |
-| _realloc.c | Function ... |
-| getenv.c | Function ... |
-| functions.c | Function ... |
+| execute.c | File contain the execute functions|
+| path.c | File that contain the path functions|
+| split.c | File that contain the split functions |
+| _realloc.c | Function containing realloc |
+| getenv.c | Function contain env functions |
+| functions.c | Function that contain builtins |
 
-
-## Function description :man_technologist:
-Function description (to be continue after)
 
 ## Simple Shell :shell:
 
@@ -74,10 +71,13 @@ wait4 (man 2 wait4)
 write (man 2 write)
 _exit (man 2 _exit)
 ```
-#### Process description
+#### Process description :man_technologist:
 
 How the shell works : 
 we add this after we finish
+
+#### Flowchart of simple shell :man_technologist:
+![68747470733a2f2f692e696d6775722e636f6d2f6e53516161516a2e6a7067](https://user-images.githubusercontent.com/97880395/182931094-367503c5-4677-4053-a640-2f5b13ec3c80.jpeg)
 
 ## License :busts_in_silhouette:
 Authors :
